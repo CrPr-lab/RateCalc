@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCalc", "RateCalc\RateCalc.csproj", "{EFBA2A7D-D54C-4E39-ADAA-5A6790A59F38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCalc", "RateCalc\RateCalc.csproj", "{6C6ACD03-CAED-496F-8600-51D022E57469}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EFBA2A7D-D54C-4E39-ADAA-5A6790A59F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFBA2A7D-D54C-4E39-ADAA-5A6790A59F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EFBA2A7D-D54C-4E39-ADAA-5A6790A59F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFBA2A7D-D54C-4E39-ADAA-5A6790A59F38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C6ACD03-CAED-496F-8600-51D022E57469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C6ACD03-CAED-496F-8600-51D022E57469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C6ACD03-CAED-496F-8600-51D022E57469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C6ACD03-CAED-496F-8600-51D022E57469}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {000C5A03-7CE8-42B2-A152-58583482A06D}
+		SolutionGuid = {3BFFBDFC-C4E4-4467-94BB-541344A28531}
 	EndGlobalSection
 EndGlobal
