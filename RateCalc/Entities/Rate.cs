@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RateCalc
 {
-    public struct Rate
+    public class Rate
     {
         [ExcelColumn("Начало периода")]
         public int PeriodFrom { get; set; }

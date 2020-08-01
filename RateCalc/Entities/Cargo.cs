@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RateCalc
 {
-    public struct Cargo
+    public class Cargo
     {
         [ExcelColumn("Груз")]
         public string Name { get; set; }
@@ -15,7 +15,7 @@ namespace RateCalc
         [ExcelColumn("Дата прихода на склад")]
         public DateTime ArrivalDate { get; set; }
 
-        //[ExcelColumn("Дата ухода со склада")]
-        //public DateTime DepartureDate { get; set; }
+        [ExcelColumn("Дата ухода со склада")]
+        public DateTime DepartureDate { get; set; }
     }
 }
