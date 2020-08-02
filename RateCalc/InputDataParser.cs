@@ -22,7 +22,7 @@ namespace RateCalc
                     // выбираем грузы, у которых дата прибытия попадает в выбранный диапазон
                     .Where(cargo => cargo.ArrivalDate >= fromDate && cargo.ArrivalDate <= toDate)
 
-                    .Where(c => c.Name == "K")
+                    .Where(c => c.Name == "B")
                     .ToList();
 
                     Rates = excel.Worksheet<Rate>("Тариф").ToList();

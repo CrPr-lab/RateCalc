@@ -232,6 +232,7 @@
             this.btnCalc.TabIndex = 15;
             this.btnCalc.Text = "Рассчитать";
             this.btnCalc.UseVisualStyleBackColor = true;
+            this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
             // 
             // dtpCalcTo
             // 

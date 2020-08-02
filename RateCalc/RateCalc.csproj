@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Cargo.cs" />
+    <Compile Include="Entities\Period.cs" />
     <Compile Include="Entities\Rate.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
