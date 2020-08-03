@@ -9,6 +9,9 @@ namespace RateCalc
 {
     public class Rate
     {
+        [ExcelColumn("№")]
+        public int Number { get; set; }
+
         [ExcelColumn("Начало периода")]
         public int PeriodFrom { get; set; }
 

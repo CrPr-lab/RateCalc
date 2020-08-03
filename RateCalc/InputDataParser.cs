@@ -19,8 +19,14 @@ namespace RateCalc
                 {
                     Cargos = excel.Worksheet<Cargo>("Груз")
                     .ToList()
+                    .Select(cargo =>
+                    {
+                        cargo.ArrivalDate = cargo.ArrivalDate.Date;
+                        cargo.DepartureDate = cargo.DepartureDate.Date;
+                        return cargo;
+                    })
                     // выбираем грузы, у которых дата прибытия попадает в выбранный диапазон
-                    .Where(cargo => cargo.ArrivalDate >= fromDate && cargo.ArrivalDate <= toDate)
+                    .Where(cargo => !(cargo.ArrivalDate > toDate || cargo.DepartureDate < fromDate))
 
                     .Where(c => c.Name == "B")
                     .ToList();
@@ -28,6 +34,7 @@ namespace RateCalc
                     Rates = excel.Worksheet<Rate>("Тариф").ToList();
       
                     Rates.First().PeriodFrom = 1;
+                    Rates.Last().PeriodTo = short.MaxValue;
                 }
                 catch (Exception E)
                 {
