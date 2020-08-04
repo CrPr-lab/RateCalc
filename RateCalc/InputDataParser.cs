@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using LinqToExcel;
 using Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace RateCalc
 {
-    public class InputDataParser
+    class InputDataParser
     {
         public InputDataParser(string dataFileName, DateTime fromDate, DateTime toDate)
         {
@@ -22,13 +23,11 @@ namespace RateCalc
                     .Select(cargo =>
                     {
                         cargo.ArrivalDate = cargo.ArrivalDate.Date;
-                        cargo.DepartureDate = cargo.DepartureDate.Date;
+                        cargo.DepartureDate = cargo.DepartureDate == default ? DateTime.MaxValue.Date : cargo.DepartureDate.Date;
                         return cargo;
                     })
-                    // выбираем грузы, у которых дата прибытия попадает в выбранный диапазон
+                    // выбираем грузы, пересекающиеся с выбранным диапазоном расчёта
                     .Where(cargo => !(cargo.ArrivalDate > toDate || cargo.DepartureDate < fromDate))
-
-                    .Where(c => c.Name == "B")
                     .ToList();
 
                     Rates = excel.Worksheet<Rate>("Тариф").ToList();
