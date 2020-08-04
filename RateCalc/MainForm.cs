@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -35,11 +36,23 @@ namespace RateCalc
                 return;
             }
 
-            var data = new InputDataParser(txbxFilePath.Text, dtpCalcFrom.Value, dtpCalcTo.Value);
+            try
+            {
+                var data = new InputDataParser(txbxFilePath.Text, dtpCalcFrom.Value, dtpCalcTo.Value);
 
-            var calcReport = new CalcReport();
+                var calcReport = new CalcReport();
 
-            dgrdResult.DataSource = calcReport.Calc(data.Cargos, data.Rates, dtpCalcFrom.Value, dtpCalcTo.Value);
+                dgrdResult.DataSource = calcReport.Calc(data.Cargos, data.Rates, dtpCalcFrom.Value, dtpCalcTo.Value);
+            }
+            catch(InvalidOperationException E)
+            {
+                if (MessageBox.Show("Поставщик 'Microsoft.ACE.OLEDB.12.0' не зарегистрирован на локальном компьютере. Необходимо установить пакет Microsoft Access Database Engine. Перейти на страницу загрузки?", "Ошибка", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                    Process.Start("https://www.microsoft.com/en-in/download/details.aspx?id=13255");
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show($"При чтении данных произошла ошибка: \n{E.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
        
         private void MainForm_Load(object sender, EventArgs e)

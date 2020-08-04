@@ -16,9 +16,7 @@ namespace RateCalc
         {
             using (var excel = new ExcelQueryFactory(dataFileName))
             {
-                try
-                {
-                    Cargos = excel.Worksheet<Cargo>("Груз")
+                Cargos = excel.Worksheet<Cargo>("Груз")
                     .ToList()
                     .Select(cargo =>
                     {
@@ -30,15 +28,10 @@ namespace RateCalc
                     .Where(cargo => !(cargo.ArrivalDate > toDate || cargo.DepartureDate < fromDate))
                     .ToList();
 
-                    Rates = excel.Worksheet<Rate>("Тариф").ToList();
-      
-                    Rates.First().PeriodFrom = 1;
-                    Rates.Last().PeriodTo = short.MaxValue;
-                }
-                catch (Exception E)
-                {
-                    MessageBox.Show($"При чтении данных произошла ошибка: {E.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }                
+                Rates = excel.Worksheet<Rate>("Тариф").ToList();
+
+                Rates.First().PeriodFrom = 1;
+                Rates.Last().PeriodTo = short.MaxValue;
             }                                 
         }
 
