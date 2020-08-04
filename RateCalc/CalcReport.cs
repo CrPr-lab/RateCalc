@@ -9,7 +9,7 @@ namespace RateCalc
     class CalcReport
     {
         public List<ReportRow> Calc(List<Cargo> cargos, List<Rate> rates, DateTime calcFrom, DateTime calcTo)
-        {
+        {           
             var Rows = cargos
                 // создаем периоды хранения для каждого груза
                 .SelectMany(cargo => rates
@@ -33,8 +33,8 @@ namespace RateCalc
                     {
                         period.Cargo,
                         period.Rate,
-                        BegCalc = new[] { period.BegCalc, calcFrom }.Max(), // корректируем границы периода
-                        EndCalc = new[] { period.EndCalc, calcTo, period.Cargo.DepartureDate }.Min(), // корректируем границы периода
+                        BegCalc = new[] { period.BegCalc, calcFrom }.Max(), 
+                        EndCalc = new[] { period.EndCalc, calcTo, period.Cargo.DepartureDate }.Min(), 
                     }
                 )
                 // формируем строки отчёта

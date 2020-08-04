@@ -29,6 +29,12 @@ namespace RateCalc
 
         private void btnCalc_Click(object sender, EventArgs e)
         {
+            if (dtpCalcFrom.Value > dtpCalcTo.Value)
+            {
+                MessageBox.Show("Начало периода расчёта не может быть больше конца периода расчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             var data = new InputDataParser(txbxFilePath.Text, dtpCalcFrom.Value, dtpCalcTo.Value);
 
             var calcReport = new CalcReport();
