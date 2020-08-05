@@ -1,4 +1,4 @@
-# Расчёт прогрессивной ставки по хранению груза (Использую WinForms, LINQ)
+# Расчёт прогрессивной ставки по хранению груза (WinForms, LINQ, Excel)
 Для работы LinqToExcel требуется установить пакет [Microsoft Access Database Engine 2010 Redistributable](https://www.microsoft.com/en-in/download/details.aspx?id=13255)
 
 >В Excel таблице два листа "Груз" и "Тариф".
