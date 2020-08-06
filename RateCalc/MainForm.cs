@@ -41,7 +41,6 @@ namespace RateCalc
                 var data = new InputDataParser(txbxFilePath.Text, dtpCalcFrom.Value, dtpCalcTo.Value);
 
                 var calcReport = new CalcReport();
-
                 dgrdResult.DataSource = calcReport.Calc(data.Cargos, data.Rates, dtpCalcFrom.Value, dtpCalcTo.Value);
             }
             catch(InvalidOperationException)
@@ -51,7 +50,7 @@ namespace RateCalc
             }
             catch (Exception E)
             {
-                MessageBox.Show($"При чтении данных произошла ошибка: \n{E.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(E.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }            
         }
        
