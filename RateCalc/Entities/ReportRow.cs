@@ -13,10 +13,10 @@ namespace RateCalc
         public string CargoName { get; set; }
 
         [DisplayName("Дата прихода на склад")]
-        public DateTime ArrivalDate { get; set; }
+        public string ArrivalDate { get; set; }
 
         [DisplayName("Дата ухода со склада")]
-        public DateTime DepartureDate { get; set; }
+        public string DepartureDate { get; set; }
 
         [DisplayName("Начало расчёта")]
         public DateTime BegCalc { get; set; }

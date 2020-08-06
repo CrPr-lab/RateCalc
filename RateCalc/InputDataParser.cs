@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LinqToExcel;
-using Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 using System.Diagnostics;
 

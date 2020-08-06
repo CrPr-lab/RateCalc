@@ -21,7 +21,7 @@ namespace RateCalc
         private void btnLoadFile_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() != DialogResult.Cancel)
-            {
+            {            
                 txbxFilePath.Text = openFileDialog.FileName;
 
                 btnCalc.Enabled = true;
@@ -44,7 +44,7 @@ namespace RateCalc
 
                 dgrdResult.DataSource = calcReport.Calc(data.Cargos, data.Rates, dtpCalcFrom.Value, dtpCalcTo.Value);
             }
-            catch(InvalidOperationException E)
+            catch(InvalidOperationException)
             {
                 if (MessageBox.Show("Поставщик 'Microsoft.ACE.OLEDB.12.0' не зарегистрирован на локальном компьютере. Необходимо установить пакет Microsoft Access Database Engine. Перейти на страницу загрузки?", "Ошибка", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                     Process.Start("https://www.microsoft.com/en-in/download/details.aspx?id=13255");

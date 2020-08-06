@@ -42,8 +42,8 @@ namespace RateCalc
                     new ReportRow()
                     {
                         CargoName = period.Cargo.Name,
-                        ArrivalDate = period.Cargo.ArrivalDate,
-                        DepartureDate = period.Cargo.DepartureDate,
+                        ArrivalDate = period.Cargo.ArrivalDate.ToShortDateString(),
+                        DepartureDate = period.Cargo.DepartureDate == DateTime.MaxValue.Date ? "ещё на складе" : period.Cargo.DepartureDate.ToShortDateString(),
                         BegCalc = period.BegCalc,
                         EndCalc = period.EndCalc,
                         StoreDays = (int)(period.EndCalc - period.BegCalc).TotalDays + 1,
