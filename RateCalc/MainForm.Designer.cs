@@ -30,7 +30,7 @@
         {
             this.dgrdResult = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grbxCalc = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCalc = new System.Windows.Forms.Button();
@@ -40,10 +40,12 @@
             this.txbxFilePath = new System.Windows.Forms.TextBox();
             this.btnLoadFile = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.pboxWait = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgrdResult)).BeginInit();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grbxCalc.SuspendLayout();
             this.grbxInitialData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxWait)).BeginInit();
             this.SuspendLayout();
             // 
             // dgrdResult
@@ -62,7 +64,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.grbxCalc);
             this.panel1.Controls.Add(this.grbxInitialData);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -70,21 +72,21 @@
             this.panel1.Size = new System.Drawing.Size(1003, 187);
             this.panel1.TabIndex = 5;
             // 
-            // groupBox1
+            // grbxCalc
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grbxCalc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnCalc);
-            this.groupBox1.Controls.Add(this.dtpCalcTo);
-            this.groupBox1.Controls.Add(this.dtpCalcFrom);
-            this.groupBox1.Location = new System.Drawing.Point(0, 91);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1003, 89);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Расчёт";
+            this.grbxCalc.Controls.Add(this.label2);
+            this.grbxCalc.Controls.Add(this.label1);
+            this.grbxCalc.Controls.Add(this.btnCalc);
+            this.grbxCalc.Controls.Add(this.dtpCalcTo);
+            this.grbxCalc.Controls.Add(this.dtpCalcFrom);
+            this.grbxCalc.Location = new System.Drawing.Point(0, 91);
+            this.grbxCalc.Name = "grbxCalc";
+            this.grbxCalc.Size = new System.Drawing.Size(1003, 89);
+            this.grbxCalc.TabIndex = 12;
+            this.grbxCalc.TabStop = false;
+            this.grbxCalc.Text = "Расчёт";
             // 
             // label2
             // 
@@ -113,6 +115,7 @@
             this.btnCalc.Size = new System.Drawing.Size(155, 38);
             this.btnCalc.TabIndex = 15;
             this.btnCalc.Text = "Рассчитать";
+            this.btnCalc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCalc.UseVisualStyleBackColor = true;
             this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
             // 
@@ -167,11 +170,25 @@
             // 
             this.openFileDialog.Filter = "Файлы данных Excel(*.xlsx;*.xls)|*.xlsx;*.xls";
             // 
+            // pboxWait
+            // 
+            this.pboxWait.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pboxWait.BackColor = System.Drawing.Color.Transparent;
+            this.pboxWait.Image = global::RateCalc.Properties.Resources.ajax_loader;
+            this.pboxWait.Location = new System.Drawing.Point(888, 122);
+            this.pboxWait.Name = "pboxWait";
+            this.pboxWait.Size = new System.Drawing.Size(32, 32);
+            this.pboxWait.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pboxWait.TabIndex = 6;
+            this.pboxWait.TabStop = false;
+            this.pboxWait.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1003, 518);
+            this.Controls.Add(this.pboxWait);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgrdResult);
             this.MinimumSize = new System.Drawing.Size(950, 500);
@@ -180,10 +197,11 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgrdResult)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grbxCalc.ResumeLayout(false);
+            this.grbxCalc.PerformLayout();
             this.grbxInitialData.ResumeLayout(false);
             this.grbxInitialData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxWait)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -195,12 +213,13 @@
         private System.Windows.Forms.TextBox txbxFilePath;
         private System.Windows.Forms.Button btnLoadFile;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grbxCalc;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCalc;
         private System.Windows.Forms.DateTimePicker dtpCalcTo;
         private System.Windows.Forms.DateTimePicker dtpCalcFrom;
+        private System.Windows.Forms.PictureBox pboxWait;
     }
 }
 

@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 using LinqToExcel;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Threading;
 
 namespace RateCalc
 {
     class InputDataParser
     {
-        public InputDataParser(string dataFileName, DateTime fromDate, DateTime toDate)
+        public async Task ParseAsync(string dataFileName, DateTime fromDate, DateTime toDate)
         {
+            await Task.Run(() => Parse(dataFileName, fromDate, toDate));
+        }
+
+        public void Parse(string dataFileName, DateTime fromDate, DateTime toDate)
+        {           
             using (var excel = new ExcelQueryFactory(dataFileName))
             {
                 Cargos = excel.Worksheet<Cargo>("Груз")
@@ -31,11 +37,11 @@ namespace RateCalc
 
                 Rates.First().PeriodFrom = 1;
                 Rates.Last().PeriodTo = short.MaxValue;
-            }                                 
+            }
         }
 
-        public List<Cargo> Cargos { get; }
+        public List<Cargo> Cargos { get; private set; }
 
-        public List<Rate> Rates { get; }
+        public List<Rate> Rates { get; private set; }
     }
 }

@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RateCalc
 {
     class CalcReport
     {
+        public async Task<List<ReportRow>> CalcAsync(List<Cargo> cargos, List<Rate> rates, DateTime calcFrom, DateTime calcTo)
+        {
+            return await Task.Run(() => Calc(cargos, rates, calcFrom, calcTo));
+        }
+
         public List<ReportRow> Calc(List<Cargo> cargos, List<Rate> rates, DateTime calcFrom, DateTime calcTo)
-        {           
+        {
             var Rows = cargos
                 // создаем периоды хранения для каждого груза
                 .SelectMany(cargo => rates

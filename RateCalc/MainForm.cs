@@ -28,20 +28,26 @@ namespace RateCalc
             }
         }
 
-        private void btnCalc_Click(object sender, EventArgs e)
+        private async void btnCalc_Click(object sender, EventArgs e)
         {
             if (dtpCalcFrom.Value > dtpCalcTo.Value)
             {
                 MessageBox.Show("Начало периода расчёта не может быть больше конца периода расчёта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            try
+            try 
             {
-                var data = new InputDataParser(txbxFilePath.Text, dtpCalcFrom.Value, dtpCalcTo.Value);
+                // показываем индикатор загрузки
+                grbxCalc.Enabled = false;
+                pboxWait.Visible = true;                
+                btnCalc.Text = "";
+
+
+                var data = new InputDataParser();
+                await data.ParseAsync(txbxFilePath.Text, dtpCalcFrom.Value, dtpCalcTo.Value);
 
                 var calcReport = new CalcReport();
-                dgrdResult.DataSource = calcReport.Calc(data.Cargos, data.Rates, dtpCalcFrom.Value, dtpCalcTo.Value);
+                dgrdResult.DataSource = await calcReport.CalcAsync(data.Cargos, data.Rates, dtpCalcFrom.Value, dtpCalcTo.Value);
             }
             catch(InvalidOperationException)
             {
@@ -51,7 +57,14 @@ namespace RateCalc
             catch (Exception E)
             {
                 MessageBox.Show(E.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
+            }     
+            finally
+            {
+                // скрываем индикатор загрузки
+                grbxCalc.Enabled = true;
+                pboxWait.Visible = false;
+                btnCalc.Text = "Рассчитать";
+            }
         }
        
         private void MainForm_Load(object sender, EventArgs e)
